@@ -32,4 +32,12 @@ class SpringbootMybatisplusApplicationTests {
         System.out.println(i);
     }
 
+    @Test
+    public void testUpdate(){
+        User user=new User();
+        user.setName("hh");
+        user.setId(6L);
+        int i=userMapper.updateById(user);
+        System.out.println(i);
+    }
 }
