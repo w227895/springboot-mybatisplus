@@ -40,4 +40,17 @@ class SpringbootMybatisplusApplicationTests {
         int i=userMapper.updateById(user);
         System.out.println(i);
     }
+
+    /** 两个人同时改一个数据
+     * 悲观锁：串行划处理，当一个人在改数据的时候，另一个人不能做任何操作
+     * 乐观锁：对数据做版本号，比如当时版本是1，第一个做的操作后版本是2，第二个操作完后发现版本号变成2
+     * 所以他的操作失败
+     */
+
+    @Test
+    public void testOptimisticLockerFail(){
+        User user=userMapper.selectById(1254045065702064130L);
+        user.setVersion(user.getVersion()-1);
+        userMapper.updateById(user);
+    }
 }
